@@ -32,9 +32,12 @@ function newItem(){
     //Appending the <span>x</span> to each of the new <li> tag
     li.appendChild(span)
 
-    for(let i=0)
-    [1,2,3,4,5,6]
 
+    for(let i=0; i < clear.length; i++) {
+
+    clear[i].onclick = function () {
+        let liParent = this.parentElement;
+        liParent.style.display="none"s
+        }    
+    }
 }
-
-
