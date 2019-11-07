@@ -33,6 +33,9 @@ function newItem(){
     document.getElementById("todoUL").appendChild(li)
     }
 
+    //sets up the clear statement
+    document.getElementById(todoInput).value=""
+
     //declared two new variables
     let span = document.createElement("span");
     let spanTxt = document.createTextNode('\u00D7');
