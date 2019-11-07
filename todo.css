@@ -1,3 +1,7 @@
+/*the * means set all elements with the style*/
+*{
+    box-sizing: border-box;
+}
 
 /* The css for the unordered list */
 ul{
@@ -5,8 +9,6 @@ ul{
     padding: 0;
 
 }
-
-
 
 /* This is the css for the item's themselves */
 ul li{
@@ -17,6 +19,10 @@ ul li{
     list-style-type: none;
     font-size: 18px;
 
+}
+
+ul li:nth-child(odd){
+    background: blue ;
 }
 
 ul li.checked{
