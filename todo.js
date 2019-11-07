@@ -1,7 +1,14 @@
 
 //declaring new global variable for the clear function
 let clear = document.getElementsByClassName('clear')
+let todoList = document.querySelector("ul")
 
+// This is the event listener for the crossing out feature
+todoList.addEventListener('click', function(ev){
+    if(ev.target.tagName === 'LI'){
+        ev.target.classList.toggle('checked')
+    }
+})
 
 // function for creating new items
 function newItem(){
@@ -37,7 +44,7 @@ function newItem(){
 
     clear[i].onclick = function () {
         let liParent = this.parentElement;
-        liParent.style.display="none"s
+        liParent.style.display="none"
         }    
     }
 }
