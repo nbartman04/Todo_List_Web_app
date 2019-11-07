@@ -25,8 +25,13 @@ function newItem(){
     //adds the test from above to the li variable
     li.appendChild(text)
 
+    //sets a requirement for user input
+    if(userInput === ""){
+        alert("You must write something!")
+    }else{
     // adds the list item on the li, but calling the ID tag and li from above 
     document.getElementById("todoUL").appendChild(li)
+    }
 
     //declared two new variables
     let span = document.createElement("span");
