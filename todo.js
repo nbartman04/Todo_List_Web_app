@@ -2,6 +2,7 @@
 //declaring new global variable for the clear function
 let clear = document.getElementsByClassName('clear')
 let todoList = document.querySelector("ul")
+let todlist = []
 
 // This is the event listener for the crossing out feature
 todoList.addEventListener('click', function(ev){
@@ -55,4 +56,14 @@ function newItem(){
         liParent.style.display="none"
         }    
     }
+}
+
+window.onload = () =>{
+    todos=JSON.parse(localStorage.getItem("todos"))
+    renderTodo()
+}
+
+renderTodo = ()=>{
+
+    
 }
