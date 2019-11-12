@@ -1,16 +1,12 @@
-/*the * means set all elements with the style*/
-*{
+* {
     box-sizing: border-box;
 }
 
-/* The css for the unordered list */
 ul{
     margin: 0;
     padding: 0;
-
 }
 
-/* This is the css for the item's themselves */
 ul li{
     cursor: pointer;
     position: relative;
@@ -18,21 +14,21 @@ ul li{
     background-color: #eee;
     list-style-type: none;
     font-size: 18px;
-
+    transition: 0.2s;
 }
 
 ul li:nth-child(odd){
-    background: blue ;
+    background: #f9f9f9;
 }
 
-ul.li:hover{
-background-color:#dddddd;
+ul li:hover{
+    background: #dddddd;
 }
 
 ul li.checked{
-background-color: #888;
-color: #ffffff;
-text-decoration: line-through;
+    background-color: #888;
+    color: #ffffff;
+    text-decoration: line-through;
 }
 
 ul li.checked::before{
@@ -41,7 +37,7 @@ ul li.checked::before{
     border-color: white;
     border-style: solid;
     border-width: 0 2px 2px 0;
-    top:   10px;
+    top: 10px;
     left: 16px;
     transform: rotate(45deg);
     height: 15px;
@@ -49,41 +45,37 @@ ul li.checked::before{
 }
 
 
-/* This is for the css for the X  */
 .clear{
     position: absolute;
     right: 0;
     top: 0;
     padding: 12px 16px 12px 16px;
-
 }
 
 .clear:hover{
-    background: red;
+    background-color: red;
     color: white;
 }
 
 .header{
-    background-color: blue;
+    background-color: #f44336;
     padding: 30px 40px;
     color: white;
     text-align: center;
-
 }
-
-header:after{
-    content:"";
+.header:after{
+    content: "";
     display: table;
-    clear: both;
+    clear:both;
 }
 
 input{
-    
-    margin: 0;
-    border: none;
+    margin:0;
+    border:none;
     border-radius: 0;
     width: 75%;
-    float: left;
+    padding: 10px;
+    float:left;
     font-size: 16px;
 }
 
@@ -93,7 +85,13 @@ input{
     background: #d9d9d9;
     color: #555555;
     float: left;
-    font-size: 16px;
     text-align: center;
+    font-size: 16px;
     cursor: pointer;
+    transition: 0.3s;
+    border-radius: 0;
+}
+
+.addBtn:hover{
+    background-color: #bbbbbb;
 }

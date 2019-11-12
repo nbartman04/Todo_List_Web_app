@@ -1,69 +1,83 @@
+let clear = document.getElementsByClassName("clear");
+let todoList = document.querySelector("ul");
 
-//declaring new global variable for the clear function
-let clear = document.getElementsByClassName('clear')
-let todoList = document.querySelector("ul")
-let todlist = []
+let todos = [];
 
-// This is the event listener for the crossing out feature
-todoList.addEventListener('click', function(ev){
-    if(ev.target.tagName === 'LI'){
-        ev.target.classList.toggle('checked')
-    }
-})
+todoList.addEventListener("click", function(ev) {
+  if (ev.target.tagName === "LI") {
+    ev.target.classList.toggle("checked");
+  }
+});
 
-// function for creating new items
-function newItem(){
+function newElement() {
+  let li = document.createElement("li");
+  let userInput = document.getElementById("todoInput").value;
+  let text = document.createTextNode(userInput);
+  li.appendChild(text);
 
-    // create a new li element
+  if (userInput === "") {
+    alert("You must write something!");
+  } else {
+    document.getElementById("todoUL").appendChild(li);
+    saveToLocalStorage(userInput);
+  }
+
+  document.getElementById("todoInput").value = "";
+
+  // create the x using a span
+  let span = document.createElement("span");
+  let spanTxt = document.createTextNode("\u00D7");
+  span.appendChild(spanTxt);
+  span.className = "clear";
+
+  // Appending the <span>x</span> to each new <li> tag
+  li.appendChild(span);
+
+  for (let i = 0; i < clear.length; i++) {
+    clear[i].onclick = function() {
+      let liParent = this.parentElement;
+      liParent.style.display = "none";
+    };
+  }
+}
+
+saveToLocalStorage = todo => {
+  todos.push(todo);
+  localStorage.setItem("todos", JSON.stringify(todos));
+};
+
+window.onload = () => {
+  if(localStorage.getItem("todos") !== null){
+    todos = JSON.parse(localStorage.getItem("todos"));
+    renderTodo();
+  }
+};
+
+renderTodo = () => {
+
+  for (todo of todos) {
+    console.log(todo);
     let li = document.createElement("li");
+    let text = document.createTextNode(todo);
+    li.appendChild(text);
+    document.getElementById("todoUL").appendChild(li);
 
-    // link it by ID tag for the user input 
-    let userInput = document.getElementById("todoInput").value;
 
-    //store the string input in to a variable 
-    let text = document.createTextNode(userInput)
-
-    //adds the test from above to the li variable
-    li.appendChild(text)
-
-    //sets a requirement for user input
-    if(userInput === ""){
-        alert("You must write something!")
-    }else{
-    // adds the list item on the li, but calling the ID tag and li from above 
-    document.getElementById("todoUL").appendChild(li)
-    }
-
-    //sets up the clear statement
-    document.getElementById(todoInput).value=""
-
-    //declared two new variables
+    // create the x using a span
     let span = document.createElement("span");
-    let spanTxt = document.createTextNode('\u00D7');
+    let spanTxt = document.createTextNode("\u00D7");
     span.appendChild(spanTxt);
+    span.className = "clear";
 
-    // add the clear class to the page
-    span.className = "clear"
+    // Appending the <span>x</span> to each new <li> tag
+    li.appendChild(span);
 
-    //Appending the <span>x</span> to each of the new <li> tag
-    li.appendChild(span)
+    for (let i = 0; i < clear.length; i++) {
+        clear[i].onclick = function() {
+          let liParent = this.parentElement;
+          liParent.style.display = "none";
+        };
+      }
 
-
-    for(let i=0; i < clear.length; i++) {
-
-    clear[i].onclick = function () {
-        let liParent = this.parentElement;
-        liParent.style.display="none"
-        }    
-    }
-}
-
-window.onload = () =>{
-    todos=JSON.parse(localStorage.getItem("todos"))
-    renderTodo()
-}
-
-renderTodo = ()=>{
-
-    
-}
+  }
+};
